@@ -35,7 +35,7 @@
 
 <script>
 export default {
-  name: 'RegularToolbar SingleLine',
+  name: 'RegularToolbar',
   data() {
     return {
       header: "A VueJS ToDo App",
