@@ -1,6 +1,6 @@
 <template>
 <div class="main-container">
-  <div class="header">
+  <div class="header md-elevation-4">
     <h1 class="md-title">{{ header }}</h1>
   </div>
   <div class="todo-list">
@@ -25,7 +25,6 @@
             <!-- <button @click="removeTodo(todo)">Delete</button> -->
             <!-- <md-icon class="delete-todo" @click="removeTodo(todo)">remove_circle_outline</md-icon> -->
             <img src="http://pluspng.com/img-png/delete-button-png-delete-icon-16.jpg" alt="remove toDo" @click="removeTodo(todo)" width="16" height="16">
-
           </li>
         </div>
       </ul>
@@ -36,7 +35,7 @@
 
 <script>
 export default {
-  name: 'RegularToolbar',
+  name: 'RegularToolbar SingleLine',
   data() {
     return {
       header: "A VueJS ToDo App",
@@ -89,11 +88,14 @@ li {
 }
 
 .header {
-    display: flex;
-    height: auto;
-    background-color: #8B0000;
-    color: white;
-    justify-content: center;
+  display: flex;
+  height: auto;
+  background-color: #8B0000;
+  color: white;
+  justify-content: center;
+  margin-top: 0.8em;
+  margin-left: 0.8em;
+  margin-right: 0.8em;
 }
 
 .md-input {
