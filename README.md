@@ -1,4 +1,5 @@
 # todoapp
+This is a simple todo app created with VueJS.
 
 ## Project setup
 ```
