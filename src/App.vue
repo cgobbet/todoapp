@@ -24,7 +24,10 @@
             <!-- deletes todos using removeTodo method -->
             <!-- <button @click="removeTodo(todo)">Delete</button> -->
             <!-- <md-icon class="delete-todo" @click="removeTodo(todo)">remove_circle_outline</md-icon> -->
-            <img src="http://pluspng.com/img-png/delete-button-png-delete-icon-16.jpg" alt="remove toDo" @click="removeTodo(todo)" width="16" height="16">
+            <!-- <img src="http://pluspng.com/img-png/delete-button-png-delete-icon-16.jpg" alt="remove toDo" @click="removeTodo(todo)" width="16" height="16"> -->
+            <i class="material-icons" alt="remove toDo" @click="removeTodo(todo)">
+delete
+</i>
           </li>
         </div>
       </ul>
@@ -80,7 +83,7 @@ img {
 
 h1 {
     font-family: 'Anton', sans-serif;
-    font-size: 5vw;
+    font-size: 5em;
 }
 
 li {
@@ -96,6 +99,9 @@ li {
   margin-top: 0.8em;
   margin-left: 0.8em;
   margin-right: 0.8em;
+}
+.material-icons {
+  vertical-align: middle;
 }
 
 .md-input {
@@ -114,16 +120,16 @@ li {
     margin-left: 1em;
     width: 75%;
     font-family: 'Helvetica Neue', sans-serif;
-    font-size: 2.4vw;
+    font-size: 2em;
 }
 .todo-item-edit,
 .todo-item-label {
     font-family: 'Helvetica Neue', sans-serif;
-    font-size: 2.5vw;
+    font-size: 2em;
     margin-left: 0.2em;
-    margin-right: 0.3em;
+    margin-right: 0.1em;
     width: 75%;
-    vertical-align:middle;
+    vertical-align: top;
 }
 
 .delete-todo {
@@ -132,19 +138,7 @@ li {
     width: 0;
 }
 
-/* .md-field, */
-/* .md-theme-default, */
-/* .md-has-value, */
-/* .md-has-placeholder, */
-/* .md-field, */
-/* .todo-input, */
-/* .md-has-value, */
-/* .md-has-placeholder, */
-/* .main-container {
-  display: inline-block;
-  justify-content: center;
-} */
-/* #md-input-0h91m9n9o {
-  margin-left: 1em;
-} */
+.toggle-todo {
+  vertical-align: middle;
+}
 </style>
