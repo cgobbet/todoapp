@@ -1,36 +1,38 @@
 <template>
-<div class="main-container">
-  <div class="header md-elevation-4">
-    <h1 class="md-title">{{ header }}</h1>
-  </div>
-  <div class="todo-list">
-    <div class="row">
+<div id="app">
+  <div class="main-container">
+    <div class="header md-elevation-4">
+      <h1 class="md-title">{{ header }}</h1>
     </div>
-    <div class="row">
-      <!-- add new todo with enter key -->
-      <md-field class="todo-input">
-        <md-input v-model="currentTodo" @keydown.enter="addTodo()" placeholder="Add a todo! It's easy!" />
-      </md-field>
-      <!-- for all todos, set class of edited todos -->
-      <ul class="todos">
-        <div class="list-div">
-          <li v-for="todo in todos" :key="todo.id">
-            <!-- binds checkbox to todo model after each instance; -->
-            <input class="toggle-todo" type="checkbox" v-model="todo.completed" />
-            <!-- starts editing process on double click -->
-            <span class="todo-item-label" :class="{ completed: todo.completed }" @dblclick="editTodo(todo)" v-if="!todo.edit">{{ todo.label }}</span>
-            <!-- concludes editing with enter click -->
-            <input v-else class="todo-item-edit" type="text" v-model="todo.label" @keyup.enter="completedEdit(todo)" />
-            <!-- deletes todos using removeTodo method -->
-            <!-- <button @click="removeTodo(todo)">Delete</button> -->
-            <!-- <md-icon class="delete-todo" @click="removeTodo(todo)">remove_circle_outline</md-icon> -->
-            <!-- <img src="http://pluspng.com/img-png/delete-button-png-delete-icon-16.jpg" alt="remove toDo" @click="removeTodo(todo)" width="16" height="16"> -->
-            <i class="material-icons" alt="remove toDo" @click="removeTodo(todo)">
-delete
-</i>
-          </li>
-        </div>
-      </ul>
+    <div class="todo-list">
+      <div class="row">
+      </div>
+      <div class="row">
+        <!-- add new todo with enter key -->
+        <md-field class="todo-input">
+          <md-input v-model="currentTodo" @keydown.enter="addTodo()" placeholder="Add a todo! It's easy!" />
+        </md-field>
+        <!-- for all todos, set class of edited todos -->
+        <ul class="todos">
+          <div class="list-div">
+            <li v-for="todo in todos" :key="todo.id">
+              <!-- binds checkbox to todo model after each instance; -->
+              <input class="toggle-todo" type="checkbox" v-model="todo.completed" />
+              <!-- starts editing process on double click -->
+              <span class="todo-item-label" :class="{ completed: todo.completed }" @dblclick="editTodo(todo)" v-if="!todo.edit">{{ todo.label }}</span>
+              <!-- concludes editing with enter click -->
+              <input v-else class="todo-item-edit" type="text" v-model="todo.label" @keyup.enter="completedEdit(todo)" />
+              <!-- deletes todos using removeTodo method -->
+              <!-- <button @click="removeTodo(todo)">Delete</button> -->
+              <!-- <md-icon class="delete-todo" @click="removeTodo(todo)">remove_circle_outline</md-icon> -->
+              <!-- <img src="http://pluspng.com/img-png/delete-button-png-delete-icon-16.jpg" alt="remove toDo" @click="removeTodo(todo)" width="16" height="16"> -->
+              <i class="material-icons" alt="remove toDo" @click="removeTodo(todo)">
+                delete
+              </i>
+            </li>
+          </div>
+        </ul>
+      </div>
     </div>
   </div>
 </div>
@@ -47,6 +49,11 @@ export default {
       completed: false, // add a completed property
       editedToDo: null // add a edited property
     };
+  },
+  mounted() {
+    if (localStorage.getItem("todos")) {
+      this.todos = JSON.parse(localStorage.getItem("todos"));
+    }
   },
   methods: {
     addTodo() {
@@ -69,12 +76,20 @@ export default {
     completedEdit(todo) {
       todo.edit = false;
     }
+  },
+  watch: {
+    todos: {
+      handler() {
+        // console.log('Todos changed!');
+        localStorage.setItem("todos", JSON.stringify(this.todos));
+      },
+      deep: true
+    }
   }
 };
 </script>
 
 <style lang="scss" scoped>
-
 img {
     vertical-align: middle;
     // width: 1.5em;
@@ -91,17 +106,17 @@ li {
 }
 
 .header {
-  display: flex;
-  height: auto;
-  background-color: #8B0000;
-  color: white;
-  justify-content: center;
-  margin-top: 0.8em;
-  margin-left: 0.8em;
-  margin-right: 0.8em;
+    display: flex;
+    height: auto;
+    background-color: #8B0000;
+    color: white;
+    justify-content: center;
+    margin-top: 0.8em;
+    margin-left: 0.8em;
+    margin-right: 0.8em;
 }
 .material-icons {
-  vertical-align: middle;
+    vertical-align: middle;
 }
 
 .md-input {
@@ -139,6 +154,6 @@ li {
 }
 
 .toggle-todo {
-  vertical-align: middle;
+    vertical-align: middle;
 }
 </style>
