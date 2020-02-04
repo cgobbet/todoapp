@@ -105,6 +105,11 @@ li {
     list-style: none;
 }
 
+.md-title {
+  color: white;
+  font-size: 3em;
+}
+
 .header {
     display: flex;
     height: auto;
