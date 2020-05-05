@@ -145,9 +145,10 @@ li {
 .todo-item-edit,
 .todo-item-label {
     font-family: 'Helvetica Neue', sans-serif;
-    font-size: 2em;
+    font-size: 1.5em;
     margin-left: 0.2em;
     margin-right: 0.1em;
+    // line-height: 1em;
     width: 75%;
     vertical-align: top;
 }
